@@ -4,7 +4,7 @@ A simple full-stack **Student CRUD** web application built with **Spring Boot** 
 
 ---
 
-### 🌐 Live Demo: [studentmanagementsystem-production-5962.up.railway.app]
+### 🌐 Live Demo: studentmanagementsystem-production-5962.up.railway.app
 
 ---
 
