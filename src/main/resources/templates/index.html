@@ -3,46 +3,55 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-uat-compatible" content="ie=edge">
-		<title>Students</title>
+		<title>Student Management System</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
 	</head>
 	<body>
-		<div class="container p-2">
-			<div class="card">
-				<div class="card-body">
-					<div th:switch="${students}" class="container my-5">
-						<p class="my-5">
-						<a th:href="@{/students/signup}" class="btn btn-primary"><i class="bi bi-person-plus"></i></a>
-						</p>
-						<div class="col-md-10">
-							<h2 th:case="null">No Students yet!! </h2>
-							<div th:case="*">
-								<table class="table table-striped table-responsive-md">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Group</th>
-											<th>Course</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="student : ${students}">
-											<td th:text="${student.name}"></td>
-											<td th:text="${student.studentGroup}"></td>
-											<td th:text="${student.course}"></td>
-											<td>
-												<a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-												<a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-primary"><i class="bi bi-trash3"></i></a>
-											</td>
-										</tr>	
-									</tbody>
-								</table>
-							</div> 
-						</div>					
-					</div>
+		<div class="page-header">
+			<h1><i class="bi bi-mortarboard-fill"></i> Student Management</h1>
+			<p>Manage your students with ease</p>
+		</div>
+
+		<div class="glass-card">
+			<a th:href="@{/students/signup}" class="btn-add">
+				<i class="bi bi-person-plus-fill"></i> Add New Student
+			</a>
+
+			<div th:switch="${students}">
+				<div th:case="null" class="empty-state">
+					<i class="bi bi-people"></i>
+					<p>No students yet. Add your first one!</p>
+				</div>
+				<div th:case="*">
+					<table class="student-table">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Group</th>
+								<th>Course</th>
+								<th>Age</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="student : ${students}">
+								<td th:text="${student.name}"></td>
+								<td th:text="${student.studentGroup}"></td>
+								<td th:text="${student.course}"></td>
+								<td th:text="${student.age}"></td>
+								<td>
+									<a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn-edit">
+										<i class="bi bi-pencil-fill"></i> Edit
+									</a>
+									<a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn-delete">
+										<i class="bi bi-trash-fill"></i> Delete
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

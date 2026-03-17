@@ -3,39 +3,45 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-uat-compatible" content="ie=edge">
-		<title>Students</title>
+		<title>Update Student</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
 	</head>
 	<body>
-		<div class="container p-2">
-			<div class="card">
-				<div class="card-body">
-					<div class="col-md-10">
-						<form action="#" th:action="@{/students/update/{id}(id=${student.id})}" th:object="${student}" method="post">
-							<div class="mb-2">
-								<label class="form-label">Student Name</label>
-								<input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
-							</div>
-							<div class="mb-2">
-								<label class="form-label">Student Group</label>
-								<input type="text" th:field="*{studentGroup}" class="form-control" id="group" placeholder="Student Group">
-							</div>
-							<div class="mb-2">
-								<label class="form-label">Student Course</label>
-								<input type="text" th:field="*{course}" class="form-control" id="course" placeholder="Enter Course">
-							</div>
-							<div class="mb-2">
-								<label class="form-label">Student Age</label>
-								<input type="number" th:field="*{age}" class="form-control" id="age" placeholder="Enter Age">
-							</div>
-							<div class="mb-2">
-								<input type="submit" class="btn btn-primary" value="Update Student">
-							</div>
-						</form>	
-					</div>					
-				</div>
+		<div class="page-header">
+			<h1><i class="bi bi-mortarboard-fill"></i> Student Management</h1>
+			<p>Manage your students with ease</p>
+		</div>
+
+		<div class="glass-card">
+			<a th:href="@{/students/list}" class="back-link">
+				<i class="bi bi-arrow-left"></i> Back to List
+			</a>
+
+			<div class="form-wrapper">
+				<div class="form-title">Edit Student</div>
+				<form action="#" th:action="@{/students/update/{id}(id=${student.id})}" th:object="${student}" method="post">
+					<div class="form-group">
+						<label>Student Name</label>
+						<input type="text" th:field="*{name}" id="name" placeholder="Enter full name">
+					</div>
+					<div class="form-group">
+						<label>Student Group</label>
+						<input type="text" th:field="*{studentGroup}" id="group" placeholder="e.g. Group A">
+					</div>
+					<div class="form-group">
+						<label>Course</label>
+						<input type="text" th:field="*{course}" id="course" placeholder="e.g. Computer Science">
+					</div>
+					<div class="form-group">
+						<label>Age</label>
+						<input type="number" th:field="*{age}" id="age" placeholder="Enter age">
+					</div>
+					<button type="submit" class="btn-submit">
+						<i class="bi bi-save-fill"></i> Save Changes
+					</button>
+				</form>
 			</div>
 		</div>
 	</body>
