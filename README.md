@@ -4,10 +4,6 @@ A simple full-stack **Student CRUD** web application built with **Spring Boot** 
 
 ---
 
-### 🌐 Live Demo: [View Here](https://studentmanagementsystem-production-5962.up.railway.app/)
-
----
-
 ## 🚀 Features
 
 - ✅ Add new students
@@ -126,4 +122,4 @@ spring.datasource.password=your_password
 
 ## 👩‍💻 Author
 
-**Anshita** — [GitHub](https://github.com/Anshita157)
+**Ansita Jena** — [GitHub](https://github.com/Anshita157)
